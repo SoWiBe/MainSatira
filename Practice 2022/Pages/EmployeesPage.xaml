@@ -1,0 +1,105 @@
+﻿<Page x:Class="Practice_2022.Pages.EmployeesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Practice_2022.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Employees">
+
+    <Grid Background="LightGoldenrodYellow">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="67*"/>
+            <RowDefinition Height="67*"/>
+            <RowDefinition Height="383*"/>
+            <RowDefinition Height="67*"/>
+        </Grid.RowDefinitions>
+        <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="20px"
+            Foreground="DarkBlue"
+            FontWeight="Bold">Исполнители</TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="181*"/>
+                <ColumnDefinition Width="140*"/>
+                <ColumnDefinition Width="79*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="txtSearch"
+                     TextChanged="txtSearch_TextChanged" Margin="6,11"/>
+            <ComboBox x:Name="cmbFilter"
+                      SelectionChanged="cmbFilter_SelectionChanged"
+                      DisplayMemberPath="Name"
+                      Grid.Column="1" Margin="37,11"/>
+            <StackPanel   
+                          Grid.Column="2"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center" Height="24" Margin="0,14" Width="150">
+                <Button x:Name="btnClear"
+                    Content="Убрать фильтры"
+                    Width="150"
+                    Height="25"
+                    Background="DarkBlue"
+                    Foreground="White"
+                    Click="btnClear_Click"/>
+            </StackPanel>
+        </Grid>
+        <DataGrid
+            x:Name="gridEmployees"
+            Grid.Row="2"
+            Background="LightGoldenrodYellow"
+            AutoGenerateColumns="False"
+            IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ФИО" Width="*" Binding="{Binding Path=FIO}"/>
+                <DataGridTextColumn Header="Должность" Width="*" Binding="{Binding Path=Positions.Name}"/>
+                <DataGridTextColumn Header="Телефон" Width="*" Binding="{Binding Path=Phone}"/>
+                <DataGridTextColumn Header="Почта" Width="*" Binding="{Binding Path=Email}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnDelete" 
+                    Grid.Column="0"
+                    Content="Удалить"
+                    Width="150"
+                    Height="25"
+                    Background="DarkBlue"
+                    Foreground="White"
+                    Click="btnDelete_Click"/>
+
+            <Button x:Name="btnRedact" 
+                    Grid.Column="1"
+                    Content="Редактировать"
+                    Width="150"
+                    Height="25"
+                    Background="DarkBlue"
+                    Foreground="White"
+                    Click="btnRedact_Click"/>
+
+            <Button x:Name="btnAdd" 
+                    Grid.Column="2"
+                    Content="Добавить"
+                    Width="150"
+                    Height="25"
+                    Background="DarkBlue"
+                    Foreground="White"
+                    Click="btnAdd_Click"/>
+            <Button x:Name="btnTasks" 
+                    Grid.Column="3"
+                    Content="Задачи"
+                    Width="150"
+                    Height="25"
+                    Background="DarkBlue"
+                    Foreground="White"
+                    Click="btnTasks_Click"/>
+        </Grid>
+    </Grid>
+</Page>
